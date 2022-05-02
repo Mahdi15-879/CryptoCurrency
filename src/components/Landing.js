@@ -9,6 +9,7 @@ import { getCoin } from "../services/api";
 
 const Landing = () => {
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -19,12 +20,25 @@ const Landing = () => {
     fetchAPI();
   }, []);
 
+  const searchHandler = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const searchedCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
-      <input type="text" placeholder="Search" />
+      <input
+        type="text"
+        placeholder="Search"
+        value={search}
+        onChange={searchHandler}
+      />
       {coins.length ? (
         <div>
-          {coins.map((coin) => (
+          {searchedCoins.map((coin) => (
             <Coin
               key={coin.id}
               name={coin.name}
