@@ -7,6 +7,9 @@ import Coin from "./Coin";
 // API
 import { getCoin } from "../services/api";
 
+// Styles
+import styles from "./Landing.module.css";
+
 const Landing = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
@@ -35,9 +38,10 @@ const Landing = () => {
         placeholder="Search"
         value={search}
         onChange={searchHandler}
+        className={styles.input}
       />
       {coins.length ? (
-        <div>
+        <div className={styles.coinContainer}>
           {searchedCoins.map((coin) => (
             <Coin
               key={coin.id}

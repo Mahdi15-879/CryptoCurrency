@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 // Components
-import Landing from './components/Landing';
+import Landing from "./components/Landing";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
